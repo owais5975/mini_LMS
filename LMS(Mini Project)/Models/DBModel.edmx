@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="LMS_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Student_tbl">
+          <Key>
+            <PropertyRef Name="St_Id" />
+          </Key>
+          <Property Name="St_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="St_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="St_Father_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="St_DOB" Type="datetime" Nullable="false" />
+          <Property Name="St_Phone_No" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="St_Address" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="St_Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="St_Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="St_Confirm_Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Role" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Submission_tbl">
+          <Key>
+            <PropertyRef Name="Sub_Id" />
+          </Key>
+          <Property Name="Sub_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sub_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Sub_File_path" Type="varchar(max)" Nullable="false" />
+          <Property Name="Sub_Date_Time" Type="datetime" Nullable="false" />
+          <Property Name="Sub_Status" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="St_Id" Type="int" />
+        </EntityType>
+        <Association Name="FK__Submissio__St_Id__49C3F6B7">
+          <End Role="Student_tbl" Type="Self.Student_tbl" Multiplicity="0..1" />
+          <End Role="Submission_tbl" Type="Self.Submission_tbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student_tbl">
+              <PropertyRef Name="St_Id" />
+            </Principal>
+            <Dependent Role="Submission_tbl">
+              <PropertyRef Name="St_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LMS_DBModelStoreContainer">
+          <EntitySet Name="Student_tbl" EntityType="Self.Student_tbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Submission_tbl" EntityType="Self.Submission_tbl" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Submissio__St_Id__49C3F6B7" Association="Self.FK__Submissio__St_Id__49C3F6B7">
+            <End Role="Student_tbl" EntitySet="Student_tbl" />
+            <End Role="Submission_tbl" EntitySet="Submission_tbl" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LMS_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Student_tbl">
+          <Key>
+            <PropertyRef Name="St_Id" />
+          </Key>
+          <Property Name="St_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="St_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="St_Father_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="St_DOB" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="St_Phone_No" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="St_Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="St_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="St_Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="St_Confirm_Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Submission_tbl" Relationship="Self.FK__Submissio__St_Id__49C3F6B7" FromRole="Student_tbl" ToRole="Submission_tbl" />
+        </EntityType>
+        <EntityType Name="Submission_tbl">
+          <Key>
+            <PropertyRef Name="Sub_Id" />
+          </Key>
+          <Property Name="Sub_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sub_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sub_File_path" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sub_Date_Time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Sub_Status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="St_Id" Type="Int32" />
+          <NavigationProperty Name="Student_tbl" Relationship="Self.FK__Submissio__St_Id__49C3F6B7" FromRole="Submission_tbl" ToRole="Student_tbl" />
+        </EntityType>
+        <Association Name="FK__Submissio__St_Id__49C3F6B7">
+          <End Role="Student_tbl" Type="Self.Student_tbl" Multiplicity="0..1" />
+          <End Role="Submission_tbl" Type="Self.Submission_tbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student_tbl">
+              <PropertyRef Name="St_Id" />
+            </Principal>
+            <Dependent Role="Submission_tbl">
+              <PropertyRef Name="St_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LMS_DBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Student_tbl" EntityType="Self.Student_tbl" />
+          <EntitySet Name="Submission_tbl" EntityType="Self.Submission_tbl" />
+          <AssociationSet Name="FK__Submissio__St_Id__49C3F6B7" Association="Self.FK__Submissio__St_Id__49C3F6B7">
+            <End Role="Student_tbl" EntitySet="Student_tbl" />
+            <End Role="Submission_tbl" EntitySet="Submission_tbl" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LMS_DBModelStoreContainer" CdmEntityContainer="LMS_DBEntities">
+          <EntitySetMapping Name="Student_tbl">
+            <EntityTypeMapping TypeName="LMS_DBModel.Student_tbl">
+              <MappingFragment StoreEntitySet="Student_tbl">
+                <ScalarProperty Name="St_Id" ColumnName="St_Id" />
+                <ScalarProperty Name="St_Name" ColumnName="St_Name" />
+                <ScalarProperty Name="St_Father_Name" ColumnName="St_Father_Name" />
+                <ScalarProperty Name="St_DOB" ColumnName="St_DOB" />
+                <ScalarProperty Name="St_Phone_No" ColumnName="St_Phone_No" />
+                <ScalarProperty Name="St_Address" ColumnName="St_Address" />
+                <ScalarProperty Name="St_Email" ColumnName="St_Email" />
+                <ScalarProperty Name="St_Password" ColumnName="St_Password" />
+                <ScalarProperty Name="St_Confirm_Password" ColumnName="St_Confirm_Password" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Submission_tbl">
+            <EntityTypeMapping TypeName="LMS_DBModel.Submission_tbl">
+              <MappingFragment StoreEntitySet="Submission_tbl">
+                <ScalarProperty Name="Sub_Id" ColumnName="Sub_Id" />
+                <ScalarProperty Name="Sub_Name" ColumnName="Sub_Name" />
+                <ScalarProperty Name="Sub_File_path" ColumnName="Sub_File_path" />
+                <ScalarProperty Name="Sub_Date_Time" ColumnName="Sub_Date_Time" />
+                <ScalarProperty Name="Sub_Status" ColumnName="Sub_Status" />
+                <ScalarProperty Name="St_Id" ColumnName="St_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/_CommonLayout.cshtml";
+}
+
+@Html.Raw(@TempData["Message"])
+
+
+
+
+<div class="container mt-2">
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h4 class="card-title">Assignment</h4>
+        </div>
+        <div class="card-body">
+            <p class="card-text">Do Practice Echoleon Form</p>
+            <a href="/Home/Assignment" class="btn btn-primary">Submission</a>
+        </div>
+    </div>
+</div>

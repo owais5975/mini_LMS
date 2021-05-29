@@ -1,0 +1,101 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<style>
+    #Logoutbtn{
+       text-decoration:none;
+       color:red;
+    }
+    #Logoutbtn:hover {
+        color: #cb6d6d;
+    }
+    .bar{
+        color:black;
+    }
+    .bar:hover{
+        color:grey;
+    }
+</style>
+</head>
+<body>
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="btn btn-default my-auto navbar-brand" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </a>
+                <a class="navbar-brand" href="/Home/Index">
+                    <img src="~/Images/online-learning (1).png" />
+                </a>
+
+                <button class="btn btn-default navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="disabled" href="/Home/Index">
+                                
+                            </a>
+                        </li>
+                    </ul>
+                    <form class="d-flex">
+                        <img src="~/Images/user_prof.png" class="my-auto" />&nbsp;&nbsp;
+                        <p class="my-auto"> <small><b><i>@Session["Name"]</i></b></small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                        <a href="/Login/Logout" id="Logoutbtn">Logout</a>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="">
+        @RenderBody()
+    </div>
+
+
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header bg-secondary text-white">
+            <h5 class="offcanvas-title text-center" id="offcanvasExampleLabel">Student Dashboard</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div>
+                <div class="list-group">
+                    <a  class="list-group-item list-group-item-action" aria-current="page" href="/Home/Index">Assignments</a>
+                    <a  class="list-group-item list-group-item-action" aria-current="page" href="/Home/Submissions">Submissions</a>
+                    @*<div class="dropdown mt-3">
+                        <button class="btn btn-secondary dropdown-toggle list-group-item list-group-item-action" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
+                            Dropdown button  
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </div>*@
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+</body>
+</html>

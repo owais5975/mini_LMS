@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LMS_DBModelStoreContainer" CdmEntityContainer="LMS_DBEntities">
+    <EntitySetMapping Name="Student_tbl">
+      <EntityTypeMapping TypeName="LMS_DBModel.Student_tbl">
+        <MappingFragment StoreEntitySet="Student_tbl">
+          <ScalarProperty Name="St_Id" ColumnName="St_Id" />
+          <ScalarProperty Name="St_Name" ColumnName="St_Name" />
+          <ScalarProperty Name="St_Father_Name" ColumnName="St_Father_Name" />
+          <ScalarProperty Name="St_DOB" ColumnName="St_DOB" />
+          <ScalarProperty Name="St_Phone_No" ColumnName="St_Phone_No" />
+          <ScalarProperty Name="St_Address" ColumnName="St_Address" />
+          <ScalarProperty Name="St_Email" ColumnName="St_Email" />
+          <ScalarProperty Name="St_Password" ColumnName="St_Password" />
+          <ScalarProperty Name="St_Confirm_Password" ColumnName="St_Confirm_Password" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Submission_tbl">
+      <EntityTypeMapping TypeName="LMS_DBModel.Submission_tbl">
+        <MappingFragment StoreEntitySet="Submission_tbl">
+          <ScalarProperty Name="Sub_Id" ColumnName="Sub_Id" />
+          <ScalarProperty Name="Sub_Name" ColumnName="Sub_Name" />
+          <ScalarProperty Name="Sub_File_path" ColumnName="Sub_File_path" />
+          <ScalarProperty Name="Sub_Date_Time" ColumnName="Sub_Date_Time" />
+          <ScalarProperty Name="Sub_Status" ColumnName="Sub_Status" />
+          <ScalarProperty Name="St_Id" ColumnName="St_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,55 @@
+﻿@model LMS_Mini_Project_.Models.Submission_tbl
+
+@{
+    ViewBag.Title = "Assignment";
+    Layout = "~/Views/Layout/_CommonLayout.cshtml";
+}
+<style>
+    .form {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .box {
+        width: 350px
+    }
+</style>
+@Html.Raw(@ViewData["Message"])
+@Html.Raw(@ViewData["SizeMessage"])
+@Html.Raw(@ViewData["ExtensionMessage"])
+@*@Html.Raw(@ViewData["Exception"])*@
+
+<div class="form mt-5">
+    <img src="~/Images/up-arrow.png" />
+</div>
+
+
+<div class="form">
+    @using (Html.BeginForm("Assignment", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <div>
+            <input type="hidden" name="St_Id" value="@Session["Id"]" readonly />
+            <input type="hidden" name="Sub_Date_Time" value="@DateTime.Now" id="Sub_Date_Time" />
+            <input type="hidden" name="Sub_Name" value="@Session["Name"]" id="Sub_Name" />
+            <input type="hidden" name="Sub_Status" value="Submitted" id="Sub_Status" />
+        </div>
+        <div class="form-horizontal mt-2">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group mt-2">
+                <input type="file" name="Sub_File" id="Sub_File" class="form-control box" required />
+            </div>
+
+            <div class="form-group mt-3">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Submit" class="btn btn-success" />
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
